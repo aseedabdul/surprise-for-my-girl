@@ -55,7 +55,7 @@ section{position:relative;overflow:hidden}
   transition: transform .4s ease;
 }
 @media (hover:hover) and (pointer:fine) and (min-width:561px){.scene-image>img:hover{transform:scale(1.5);z-index:2}}
-.proposal-heart{position:absolute;display:block;color:rgba(164,119,197,.48);animation:proposal-heart-float var(--duration) ease-in-out var(--delay) infinite;will-change:transform,opacity}
+.proposal-heart{position:absolute;display:block;color:rgba(145,101,179,.82);animation:proposal-heart-float var(--duration) ease-in-out var(--delay) infinite;will-change:transform,opacity}
 @keyframes proposal-heart-float{0%{opacity:0;transform:translateY(0) scale(.8)}18%{opacity:.65}72%{opacity:.5}100%{opacity:0;transform:translateY(-110px) scale(1.05)}}
 .fh{position:absolute;color:var(--d);animation:flt 5s ease-in-out infinite;pointer-events:none}
 @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
@@ -264,7 +264,7 @@ viraivil un kanavanaga.`}],
 const $=id=>document.getElementById(id),RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const ph=(label,img,alt,lazy)=>img?`<img src="${img}" alt="${alt||""}" ${lazy?'loading="lazy"':""}>`:`<div class="ph" role="img" aria-label="${label}"><span>${label}</span></div>`;
 const heart=(s=18)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z"/></svg>`;
-for(let i=0;i<16;i++){const h=document.createElement("span"),size=24+Math.random()*12;h.className="proposal-heart";h.innerHTML=heart(size);h.style.left=Math.random()*96+"%";h.style.top=Math.random()*100+"%";h.style.setProperty("--duration",7+Math.random()*6+"s");h.style.setProperty("--delay",-Math.random()*13+"s");$("proposalHearts").appendChild(h)}
+for(let i=0;i<30;i++){const h=document.createElement("span"),size=i%3===0?38+Math.random()*10:27+Math.random()*10;h.className="proposal-heart";h.innerHTML=heart(size);h.style.left=Math.random()*96+"%";h.style.top=Math.random()*100+"%";h.style.setProperty("--duration",7+Math.random()*6+"s");h.style.setProperty("--delay",-Math.random()*13+"s");$("proposalHearts").appendChild(h)}
 
 // nav + reveals
 const secs=[...document.querySelectorAll("section")];
