@@ -29,6 +29,8 @@ section{position:relative;overflow:hidden}
 .chip{position:absolute;left:.8rem;bottom:.8rem;z-index:2;font:.65rem var(--head);background:rgba(255,255,255,.75);padding:.2em .7em;border-radius:99px}
 /* proposal */
 .proposal{background:#FFFFFF;padding:6rem 1.2rem;overflow:visible}
+.proposal-hearts{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.proposal>.wrap{position:relative;z-index:1}
 .wrap{max-width:660px;margin:0 auto}
 .date{text-align:center;font:400 clamp(2rem,6vw,3.2rem) var(--hand);color:var(--d);margin:0 0 .5rem}
 .scene{position:relative;max-width:520px;margin:0 auto 3rem;aspect-ratio:520/300}
@@ -53,6 +55,8 @@ section{position:relative;overflow:hidden}
   transition: transform .4s ease;
 }
 @media (hover:hover) and (pointer:fine) and (min-width:561px){.scene-image>img:hover{transform:scale(1.5);z-index:2}}
+.proposal-heart{position:absolute;display:block;color:rgba(164,119,197,.48);animation:proposal-heart-float var(--duration) ease-in-out var(--delay) infinite;will-change:transform,opacity}
+@keyframes proposal-heart-float{0%{opacity:0;transform:translateY(0) scale(.8)}18%{opacity:.65}72%{opacity:.5}100%{opacity:0;transform:translateY(-110px) scale(1.05)}}
 .fh{position:absolute;color:var(--d);animation:flt 5s ease-in-out infinite;pointer-events:none}
 @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .letter{background:var(--d);color:#fff;border-radius:6px;padding:clamp(1.4rem,5vw,3rem);box-shadow:0 18px 50px -22px rgba(164,119,197,.55)}
@@ -139,7 +143,7 @@ nav a.on{background:var(--dd);transform:scale(1.4)}
 <nav id="nav" aria-label="Sections"></nav>
 
 <section class="full hero" id="s1"><div class="bg" id="heroBg"></div><h1>HAPPY ANNIVERSARY NAE SESANG</h1></section>
-<section class="proposal" id="s2"><div class="wrap">
+<section class="proposal" id="s2"><div class="proposal-hearts" id="proposalHearts" aria-hidden="true"></div><div class="wrap">
   <p class="date rv">January 26, 2026</p>
   <div class="scene rv" id="scene"></div>
   <div class="letter" id="letter"></div>
@@ -260,6 +264,7 @@ viraivil un kanavanaga.`}],
 const $=id=>document.getElementById(id),RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const ph=(label,img,alt,lazy)=>img?`<img src="${img}" alt="${alt||""}" ${lazy?'loading="lazy"':""}>`:`<div class="ph" role="img" aria-label="${label}"><span>${label}</span></div>`;
 const heart=(s=18)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z"/></svg>`;
+for(let i=0;i<16;i++){const h=document.createElement("span"),size=24+Math.random()*12;h.className="proposal-heart";h.innerHTML=heart(size);h.style.left=Math.random()*96+"%";h.style.top=Math.random()*100+"%";h.style.setProperty("--duration",7+Math.random()*6+"s");h.style.setProperty("--delay",-Math.random()*13+"s");$("proposalHearts").appendChild(h)}
 
 // nav + reveals
 const secs=[...document.querySelectorAll("section")];
