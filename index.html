@@ -59,7 +59,7 @@ section{position:relative;overflow:hidden}
 @keyframes proposal-heart-float{0%{opacity:0;transform:translateY(0) scale(.8)}18%{opacity:.65}72%{opacity:.5}100%{opacity:0;transform:translateY(-110px) scale(1.05)}}
 .fh{position:absolute;color:var(--d);animation:flt 5s ease-in-out infinite;pointer-events:none}
 @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.letter{background:var(--d);color:#fff;border-radius:6px;padding:clamp(1.4rem,5vw,3rem);box-shadow:0 18px 50px -22px rgba(164,119,197,.55)}
+.letter{background:var(--d);color:#FFFFFF;border-radius:6px;padding:clamp(1.4rem,5vw,3rem);box-shadow:0 18px 50px -22px rgba(164,119,197,.55)}
 .letter p{margin:0 0 1.5em;max-width:62ch}
 .letter p:last-child{margin:0;font:400 1.9rem/1.3 var(--hand);color:inherit}
 .rv{opacity:0;transform:translateY(18px);transition:opacity 1s,transform 1s}
@@ -67,19 +67,23 @@ section{position:relative;overflow:hidden}
 /* titles */
 .title{text-align:center;font:400 clamp(1.8rem,4.5vw,2.8rem) var(--head);color:var(--d);margin:0 0 3rem}
 /* poems */
-.poems{background:var(--l);padding:6rem 1.2rem}
+.poems{background:#FFFFFF;padding:6rem 1.2rem}
+.poems-hearts{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.poems>.title,.poems>.pg{position:relative;z-index:1}
 .pg{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:1.6rem}
-.pc{position:relative;grid-column:span 2;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");border-radius:10px 10px 18px 10px;padding:1.8rem 1.6rem 1.4rem;min-height:260px;display:flex;flex-direction:column;box-shadow:0 14px 34px -16px rgba(64,54,74,.35);transition:transform .5s,box-shadow .5s;animation:flt 7s ease-in-out infinite}
+.pc{position:relative;grid-column:span 2;background:var(--d);border-radius:10px 10px 18px 10px;padding:1.8rem 1.6rem 1.4rem;min-height:260px;display:flex;flex-direction:column;box-shadow:0 14px 34px -16px rgba(64,54,74,.35);transition:transform .5s,box-shadow .5s;animation:flt 7s ease-in-out infinite}
 .pc:nth-child(1){grid-column:1/-1;max-width:620px;margin:0 auto;width:100%;min-height:380px;padding:2.4rem 2.2rem 1.8rem;animation-delay:-2s}
 .pc:nth-child(3n){animation-delay:-3s}
 .pc:nth-child(5){grid-column:2/span 2}.pc:nth-child(6){grid-column:4/span 2}
 .pc:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 24px 44px -16px rgba(64,54,74,.4);animation-play-state:paused}
-.pc h3{margin:0 0 .8rem;font:700 1rem "Cormorant Garamond",Georgia,serif;color:var(--d);letter-spacing:.1em}
-.pc .body{flex:1;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(17px,1.32vw,20px);font-weight:400;line-height:1.75;color:var(--t);white-space:pre-wrap}
-.pc .sig{font:400 1.6rem var(--hand);color:var(--d);text-align:right;margin-top:.8rem;min-height:2.2rem;border-top:1px dotted var(--d)}
-.pc .fl{position:absolute;right:.9rem;top:.7rem;color:var(--d);font-size:.9rem}
+.pc h3{margin:0 0 .8rem;font:700 1rem "Cormorant Garamond",Georgia,serif;color:#FFFFFF;letter-spacing:.1em;text-decoration:underline;text-underline-offset:.15em}
+.pc .body{flex:1;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(17px,1.32vw,20px);font-weight:400;line-height:1.75;color:#FFFFFF;white-space:pre-wrap}
+.pc .sig{font:400 1.6rem var(--hand);color:#FFFFFF;text-align:right;margin-top:.8rem;min-height:2.2rem;border-top:1px dotted var(--d)}
+.pc .fl{position:absolute;right:.9rem;top:.7rem;color:#FFFFFF;font-size:.9rem}
 /* timeline */
 .tl{background:linear-gradient(var(--w),var(--ll));padding:6rem 1.2rem}
+.timeline-hearts{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.tl>.title,.tl>.path,.tl>.special{position:relative;z-index:1}
 .path{position:relative;max-width:1000px;margin:0 auto}
 .path svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .path path{fill:none;stroke:var(--d);stroke-width:2;stroke-dasharray:2 9;stroke-linecap:round}
@@ -149,8 +153,8 @@ nav a.on{background:var(--dd);transform:scale(1.4)}
   <div class="letter" id="letter"></div>
 </div></section>
 <section class="full nae" id="s3"><div class="bg" id="naeBg"></div><h2 id="naeT"></h2></section>
-<section class="poems" id="s4"><h2 class="title rv">Our Love Letters &amp; Poems</h2><div class="pg" id="pg"></div></section>
-<section class="tl" id="s5"><h2 class="title rv">Our Memory Timeline</h2><div class="path" id="path"><svg><path id="dots"/></svg><div id="mems"></div></div><div class="special rv"><p id="spec"></p></div></section>
+<section class="poems" id="s4"><div class="poems-hearts" id="poemHearts" aria-hidden="true"></div><h2 class="title rv">Our Love Letters &amp; Poems</h2><div class="pg" id="pg"></div></section>
+<section class="tl" id="s5"><div class="timeline-hearts" id="timelineHearts" aria-hidden="true"></div><h2 class="title rv">Our Memory Timeline</h2><div class="path" id="path"><svg><path id="dots"/></svg><div id="mems"></div></div><div class="special rv"><p id="spec"></p></div></section>
 <section class="sur" id="s6">
   <h2 id="sh"></h2>
   <div class="rope" id="rope" role="button" tabindex="0" aria-label="Pull the cord"><i></i><b></b></div>
@@ -264,7 +268,10 @@ viraivil un kanavanaga.`}],
 const $=id=>document.getElementById(id),RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const ph=(label,img,alt,lazy)=>img?`<img src="${img}" alt="${alt||""}" ${lazy?'loading="lazy"':""}>`:`<div class="ph" role="img" aria-label="${label}"><span>${label}</span></div>`;
 const heart=(s=18)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z"/></svg>`;
-for(let i=0;i<30;i++){const h=document.createElement("span"),size=i%3===0?38+Math.random()*10:27+Math.random()*10;h.className="proposal-heart";h.innerHTML=heart(size);h.style.left=Math.random()*96+"%";h.style.top=Math.random()*100+"%";h.style.setProperty("--duration",7+Math.random()*6+"s");h.style.setProperty("--delay",-Math.random()*13+"s");$("proposalHearts").appendChild(h)}
+function fillFloatingHearts(containerId){const layer=$(containerId);for(let i=0;i<30;i++){const h=document.createElement("span"),size=i%3===0?38+Math.random()*10:27+Math.random()*10;h.className="proposal-heart";h.innerHTML=heart(size);h.style.left=Math.random()*96+"%";h.style.top=Math.random()*100+"%";h.style.setProperty("--duration",7+Math.random()*6+"s");h.style.setProperty("--delay",-Math.random()*13+"s");layer.appendChild(h)}}
+fillFloatingHearts("proposalHearts");
+fillFloatingHearts("poemHearts");
+fillFloatingHearts("timelineHearts");
 
 // nav + reveals
 const secs=[...document.querySelectorAll("section")];
