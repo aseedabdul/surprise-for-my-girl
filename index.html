@@ -33,6 +33,7 @@ section{position:relative;overflow:hidden}
 .date{text-align:center;font:400 clamp(2rem,6vw,3.2rem) var(--hand);color:var(--d);margin:0 0 .5rem}
 .scene{position:relative;max-width:520px;margin:0 auto 3rem;aspect-ratio:520/300}
 .scene svg,.scene .ph{width:100%;height:100%;border-radius:24px}
+.scene>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;border-radius:24px}
 .fh{position:absolute;color:var(--d);animation:flt 5s ease-in-out infinite;pointer-events:none}
 @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .letter{background:rgba(255,255,255,.75);border-radius:6px;padding:clamp(1.4rem,5vw,3rem);box-shadow:0 18px 50px -22px rgba(164,119,197,.55)}
@@ -145,7 +146,7 @@ nav a.on{background:var(--dd);transform:scale(1.4)}
 const CFG={
   heroImg:"", heroAlt:"Our photograph",            // HERO_IMAGE_PLACEHOLDER
   naeImg:"", naeAlt:"Our photograph",              // NAE_SESANG_IMAGE_PLACEHOLDER
-  proposalImg:"", proposalAlt:"Her proposal on Instagram", // PROPOSAL_ILLUSTRATION_PLACEHOLDER (blank = built-in scene)
+  proposalImg:"images/dudu-bubu.png", proposalAlt:"Dudu and Bubu together", // PROPOSAL_ILLUSTRATION_PLACEHOLDER (blank = built-in scene)
   letter:`My beautiful girl, I never imagined that someone could love me this much. You gave my life a meaning.
 
 I know how much you have struggled in your life, and I also know how much pain I may have caused you along the way. But I promise you, as long as I live, I will do everything within my power to keep you happy.
