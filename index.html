@@ -7,7 +7,7 @@
 <title>Happy Anniversary Nae Sesang</title>
 <meta name="description" content="">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Noto+Serif+Tamil:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Noto+Serif+Tamil:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{--w:#fff;--l:#E8DDF5;--ll:#F5F0FA;--d:#A477C5;--dd:#9165B3;--t:#40364A;--serif:"Cormorant Garamond","Noto Serif Tamil",Georgia,serif;--head:"Playfair Display","Noto Serif Tamil",Georgia,serif;--hand:"Great Vibes","Brush Script MT",cursive;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit}
@@ -21,11 +21,17 @@ section{position:relative;overflow:hidden}
 .bg>img,.bg>.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:zoom 22s ease-out forwards}
 .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(64,54,74,.28),rgba(64,54,74,.38))}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.12)}}
-.hero h1,.nae h2{position:relative;z-index:1;margin:0;padding:0 1.2rem;text-align:center;font:400 clamp(2.2rem,7vw,5.5rem)/1.15 var(--head);letter-spacing:.06em;color:#fff;text-shadow:0 2px 24px rgba(64,54,74,.45);animation:fade 3.2s ease .4s both}
+.hero-copy{position:relative;z-index:1;width:100%;padding:0 1rem;text-align:center}
+.hero h1{margin:0;color:#fff;font:500 clamp(1.125rem,6.5vw,5.5rem)/1.1 "Bodoni Moda",serif;letter-spacing:.04em;white-space:nowrap;text-shadow:0 2px 24px rgba(64,54,74,.45);animation:heroTitleIn 1.8s cubic-bezier(.2,.7,.25,1) both}
+.hero-subtitle{margin:.65rem 0 0;color:#fff;font:400 clamp(1.375rem,2.5vw,1.625rem)/1.3 "Cinzel",serif;letter-spacing:.16em;animation:heroSubtitleIn 1.5s cubic-bezier(.2,.7,.25,1) .45s both}
+.hero-heart{display:block;margin-top:.3rem;color:#fff;font-size:1.35rem;line-height:1;animation:heroSubtitleIn 1.5s cubic-bezier(.2,.7,.25,1) .65s both}
+.nae h2{position:relative;z-index:1;margin:0;padding:0 1.2rem;text-align:center;font:400 clamp(2.2rem,7vw,5.5rem)/1.15 var(--head);letter-spacing:.06em;color:#fff;text-shadow:0 2px 24px rgba(64,54,74,.45);animation:fade 3.2s ease .4s both}
 .nae h2{font-family:var(--serif);font-weight:600;letter-spacing:.3em;animation:none}
 .nae h2 span{display:inline-block;opacity:0;transform:translateY(10px);transition:opacity 1.2s,transform 1.2s}
 .nae.in h2 span{opacity:1;transform:none}
 @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes heroTitleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes heroSubtitleIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .chip{position:absolute;left:.8rem;bottom:.8rem;z-index:2;font:.65rem var(--head);background:rgba(255,255,255,.75);padding:.2em .7em;border-radius:99px}
 /* proposal */
 .proposal{background:#FFFFFF;padding:6rem 1.2rem;overflow:visible}
@@ -146,7 +152,7 @@ nav a.on{background:var(--dd);transform:scale(1.4)}
 <body>
 <nav id="nav" aria-label="Sections"></nav>
 
-<section class="full hero" id="s1"><div class="bg" id="heroBg"></div><h1>HAPPY ANNIVERSARY NAE SESANG</h1></section>
+<section class="full hero" id="s1"><div class="bg" id="heroBg"></div><div class="hero-copy"><h1>HAPPY ANNIVERSARY</h1><p class="hero-subtitle">NEA SESANG</p><span class="hero-heart" aria-hidden="true">🤍</span></div></section>
 <section class="proposal" id="s2"><div class="proposal-hearts" id="proposalHearts" aria-hidden="true"></div><div class="wrap">
   <p class="date rv">January 26, 2026</p>
   <div class="scene rv" id="scene"></div>
@@ -171,7 +177,7 @@ nav a.on{background:var(--dd);transform:scale(1.4)}
 <script>
 /* ===== EDIT HERE: all images, text and links ===== */
 const CFG={
-  heroImg:"", heroAlt:"Our photograph",            // HERO_IMAGE_PLACEHOLDER
+  heroImg:"images/hero section.png",             // HERO_IMAGE_PLACEHOLDER
   naeImg:"", naeAlt:"Our photograph",              // NAE_SESANG_IMAGE_PLACEHOLDER
   proposalImg:"images/dudu-bubu.png", proposalAlt:"Dudu and Bubu together", // PROPOSAL_ILLUSTRATION_PLACEHOLDER (blank = built-in scene)
   letter:`My beautiful girl, I never imagined that someone could love me this much. You gave my life a meaning.
