@@ -95,12 +95,14 @@ section{position:relative;overflow:hidden}
 .path svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .path path{fill:none;stroke:var(--d);stroke-width:2;stroke-dasharray:2 9;stroke-linecap:round}
 .m{position:relative;z-index:1;width:min(300px,78vw);aspect-ratio:1;margin:0 0 -2.5rem 6%;filter:drop-shadow(0 8px 14px rgba(64,54,74,.18));transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .55s}
+.m:nth-child(2),.m:nth-child(4){margin-bottom:2rem}
 .m:nth-child(even){margin-left:auto;margin-right:6%}
 .m:nth-child(3n){margin-left:32%}.m:nth-child(3n+2):nth-child(odd){margin-left:20%}
 .m .c{width:100%;height:100%;background:#fff;border-radius:18px;clip-path:polygon(0 0,100% 0,100% calc(100% - 30px),calc(100% - 30px) 100%,0 100%);padding:.8rem;display:flex;flex-direction:column;gap:.35rem;cursor:pointer}
 .m:nth-child(odd) .c{background:var(--ll)}
 .m .c::after{content:"";position:absolute;right:0;bottom:0;width:30px;height:30px;background:linear-gradient(135deg,var(--d) 50%,transparent 50%);border-radius:0 0 18px 0;transform:scaleX(-1) rotate(90deg);opacity:.55}
 .m .im{flex:1;border-radius:10px;overflow:hidden;min-height:0}
+.m .im>img{width:100%;height:100%;object-fit:contain}
 .m .im>*{transition:transform .7s}
 .m .dt{font:600 1.15rem/1 var(--head);text-align:center}
 .m .ti{font:italic 1rem/1.2 var(--serif);text-align:center;color:#6a5a7a;min-height:1.2em}
@@ -109,9 +111,14 @@ section{position:relative;overflow:hidden}
 .m.nb{transform:scale(.96)}
 .special{max-width:640px;margin:6rem auto 0;text-align:center;padding:2.6rem 1.6rem;border-radius:20px;background:var(--l);position:relative}
 .special::before{content:"♡";display:block;font-size:1.6rem;color:var(--d)}
-.special p{margin:.4rem 0 0;font:400 1.9rem/1.35 var(--hand)}
+.special p{margin:.4rem 0 0;font:400 1.25rem/1.65 "Cormorant Garamond",Georgia,serif}
+.special-date{display:flex;justify-content:center;align-items:baseline;margin-top:1rem;font:400 1.15rem/1.4 "Cormorant Garamond",Georgia,serif;color:var(--t)}
+.special-date input{width:2.2em;padding:0;border:0;border-bottom:1px dotted var(--d);border-radius:0;background:transparent;color:inherit;font:inherit;text-align:center}
+.special-date input:focus-visible{outline:2px solid var(--d);outline-offset:2px}
+.special-player{display:block;width:min(100%,520px);height:auto;margin:1rem auto 0;opacity:0;transition:opacity .5s ease}
+.special-player.is-visible{opacity:1}
 /* surprise */
-.sur{background:#fff;display:grid;place-items:center;min-height:100dvh;padding:2rem 1rem;position:relative}
+.sur{background:#fff url("images/final page surprise.png") center/cover no-repeat;display:grid;place-items:center;min-height:100dvh;padding:2rem 1rem;position:relative}
 .sur h2{margin:0;font:400 clamp(1.7rem,6vw,4.2rem)/1.2 var(--head);text-align:center;letter-spacing:.12em;max-width:16ch;position:relative;color:var(--t)}
 .sur h2 .ch{display:inline-block;opacity:0;transform:translateY(16px)}
 .sur.in h2 .ch{animation:fade 1s ease forwards}
@@ -160,9 +167,10 @@ nav a.on{background:var(--dd);transform:scale(1.4)}
   <div class="letter" id="letter"></div>
 </div></section>
 <section class="full nae" id="s3"><div class="bg" id="naeBg"></div><h2 id="naeT"></h2></section>
-<section class="poems" id="s4"><div class="poems-hearts" id="poemHearts" aria-hidden="true"></div><h2 class="title rv">Our Love Letters &amp; Poems</h2><div class="pg" id="pg"></div></section>
-<section class="tl" id="s5"><div class="timeline-hearts" id="timelineHearts" aria-hidden="true"></div><h2 class="title rv">Our Memory Timeline</h2><div class="path" id="path"><svg><path id="dots"/></svg><div id="mems"></div></div><div class="special rv"><p id="spec"></p></div></section>
+<section class="poems" id="s4"><div class="poems-hearts" id="poemHearts" aria-hidden="true"></div><h2 class="title rv">KAVITHAIGAL</h2><div class="pg" id="pg"></div></section>
+<section class="tl" id="s5"><div class="timeline-hearts" id="timelineHearts" aria-hidden="true"></div><h2 class="title rv">Our Memory Timeline</h2><div class="path" id="path"><svg><path id="dots"/></svg><div id="mems"></div></div><div class="special rv"><p id="spec"></p><div class="special-date"><input id="specialDay" type="text" inputmode="numeric" maxlength="2" pattern="[0-9]{1,2}" placeholder="DD" aria-label="Day of month">-09-2026</div><img class="special-player" id="specialPlayer" src="images/music-player-controls.png" alt="Music player controls" hidden></div></section>
 <section class="sur" id="s6">
+  <div class="timeline-hearts" id="surpriseHearts" aria-hidden="true"></div>
   <h2 id="sh"></h2>
   <div class="rope" id="rope" role="button" tabindex="0" aria-label="Pull the cord"><i></i><b></b></div>
   <div class="stage" id="stage">
@@ -262,10 +270,19 @@ aanal nenaivu muluvathum un ennam than.
 Unakaga kaalam varai na irupen,
 un Kaviganaga, un kadhalanaga,
 viraivil un kanavanaga.`}],
-  memories:[ // MEMORY_01 to MEMORY_10: set img ("photos/m1.jpg") and title
-    "May 21, 2026","June 3, 2026","June 22, 2026","July 3, 2026","July 21, 2026","July 28, 2026",
-    "September 12, 2026","September 19, 2026","September 26, 2026","September 27, 2026"].map(d=>({d,img:"",title:"[Add memory title]",alt:""})),
-  special:"[ADD OUR SPECIAL MESSAGE HERE]",
+  memories:[
+    {d:"27.01.2026",img:"images/first date.png",title:"our first date",alt:"our first date"},
+    {d:"May 21, 2026",img:"images/beach date 1.png",title:"our first beach date",alt:"our first beach date"},
+    {d:"June 3, 2026",img:"images/beach date 2.png",title:"our second beach date",alt:"our second beach date"},
+    {d:"June 22, 2026",img:"images/beach date 3.png",title:"our third beach date",alt:"our third beach date"},
+    {d:"July 3, 2026",img:"images/beach date 4.png",title:"our forth beach date",alt:"our forth beach date"},
+    {d:"July 21, 2026",img:"images/beach date 5.png",title:"our fifth beach date",alt:"our fifth beach date"},
+    {d:"July 28, 2026",img:"images/beach date 6.png",title:"our sixth beach date",alt:"our sixth beach date"},
+    {d:"September 12, 2026",img:"images/normal date.png",title:"surprise visit",alt:"surprise visit"},
+    {d:"September 26, 2026",img:"images/madurai date 1.png",title:"our first long drive",alt:"our first long drive"},
+    {d:"September 27, 2026",img:"images/madurai date 2.png",title:"our special date",alt:"our special date"}
+  ],
+  special:"Thangoo unoda travel panna intha oru varusam ni enaku neraya visayam ye life la alaga katuna. Love ooda value enanu enaku purinjuchu ,Oruthi unmaiya namala nesicha ipditha irukum antha feel irukkum nu kaatuna .Na neraya visayathula unna paathu proud feel paneeruke chlm, Ni enaku kudutha love a vida na kuduthurukananu therla intha oru varusathula aana neraya ala vachuruke, Ini vara kaalam ni ena love panratha vida oru padi mela unna love panre Insha allah. Aprm one more thing ivlo memories a mention panna naa epdi antha day va marape.",
   say:"If you want to know the surprise, you say I love you five times.",
   voiceAudio:"",                                   // DUDU_VOICE_AUDIO (optional mp3 path)
   mascotImg:"",                                    // DUDU_CHARACTER_PLACEHOLDER (blank = built-in bear)
@@ -279,6 +296,7 @@ function fillFloatingHearts(containerId){const layer=$(containerId);for(let i=0;
 fillFloatingHearts("proposalHearts");
 fillFloatingHearts("poemHearts");
 fillFloatingHearts("timelineHearts");
+fillFloatingHearts("surpriseHearts");
 
 // nav + reveals
 const secs=[...document.querySelectorAll("section")];
@@ -316,6 +334,9 @@ $("path").addEventListener("pointermove",e=>{if(e.pointerType!=="mouse"||RM)retu
 $("path").addEventListener("pointerleave",()=>setOn(-1));
 cards.forEach((c,i)=>c.addEventListener("click",e=>{setOn(c.classList.contains("on")?-1:i)}));
 $("spec").textContent=CFG.special;
+const specialDay=$("specialDay"),specialPlayer=$("specialPlayer");
+specialDay.addEventListener("input",()=>{if(specialDay.value.trim()!=="19"){specialPlayer.classList.remove("is-visible");specialPlayer.hidden=true}});
+specialDay.addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();if(specialDay.value.trim()==="19"){specialPlayer.hidden=false;requestAnimationFrame(()=>specialPlayer.classList.add("is-visible"))}else{specialPlayer.classList.remove("is-visible");specialPlayer.hidden=true}});
 
 // 6
 const SH="THE SURPRISE IS NOT OVER BABE";
