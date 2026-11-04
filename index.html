@@ -115,8 +115,33 @@ section{position:relative;overflow:hidden}
 .special-date{display:flex;justify-content:center;align-items:baseline;margin-top:1rem;font:400 1.15rem/1.4 "Cormorant Garamond",Georgia,serif;color:var(--t)}
 .special-date input{width:2.2em;padding:0;border:0;border-bottom:1px dotted var(--d);border-radius:0;background:transparent;color:inherit;font:inherit;text-align:center}
 .special-date input:focus-visible{outline:2px solid var(--d);outline-offset:2px}
-.special-player{display:block;width:min(100%,520px);height:auto;margin:1rem auto 0;opacity:0;transition:opacity .5s ease}
+.special-player{width:min(100%,520px);aspect-ratio:1898/530;margin:1rem auto 0;padding:8px 10px 6px;display:flex;flex-direction:column;justify-content:space-between;color:var(--t);opacity:0;transition:opacity .5s ease}
 .special-player.is-visible{opacity:1}
+.special-player[hidden]{display:none}
+.player-audio{display:none}
+.player-progress{display:grid;grid-template-columns:3.2em minmax(0,1fr) 3.2em;align-items:center;gap:.45rem;width:100%}
+.player-time{font:400 clamp(.68rem,2.2vw,.82rem)/1 "Cormorant Garamond",Georgia,serif;font-variant-numeric:tabular-nums}
+.player-time:last-child{text-align:right}
+.player-seek{width:100%;height:24px;margin:0;appearance:none;background:transparent;cursor:pointer;touch-action:pan-y}
+.player-seek::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:linear-gradient(to right,var(--t) 0%,var(--t) var(--progress,0%),rgba(64,54,74,.2) var(--progress,0%),rgba(64,54,74,.2) 100%)}
+.player-seek::-moz-range-track{height:6px;border-radius:99px;background:rgba(64,54,74,.2)}
+.player-seek::-moz-range-progress{height:6px;border-radius:99px;background:var(--t)}
+.player-seek::-webkit-slider-thumb{width:16px;height:16px;margin-top:-5px;appearance:none;border:0;border-radius:50%;background:var(--t);box-shadow:0 1px 5px rgba(64,54,74,.25);transition:transform .18s ease}
+.player-seek::-moz-range-thumb{width:16px;height:16px;border:0;border-radius:50%;background:var(--t);box-shadow:0 1px 5px rgba(64,54,74,.25);transition:transform .18s ease}
+.player-seek:hover::-webkit-slider-thumb{transform:scale(1.15)}
+.player-seek:hover::-moz-range-thumb{transform:scale(1.15)}
+.player-controls{display:flex;align-items:center;justify-content:center;gap:clamp(16px,5vw,36px);width:100%}
+.player-control{width:38px;height:40px;padding:5px;border:0;border-radius:50%;display:grid;place-items:center;background:transparent;color:inherit;cursor:pointer;transition:transform .18s ease,background-color .18s ease,opacity .18s ease}
+.player-control:hover:not(:disabled){transform:scale(1.12);background:rgba(164,119,197,.16)}
+.player-control:active:not(:disabled){transform:scale(.94)}
+.player-control:disabled{opacity:.38;cursor:not-allowed}
+.player-control svg{width:100%;height:100%;fill:currentColor;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.player-play{width:54px;height:54px;padding:11px;border:3px solid currentColor}
+.player-play svg{width:100%;height:100%}
+.player-control[aria-pressed="true"]{color:var(--dd);background:rgba(164,119,197,.16)}
+.player-status{margin:.35rem 0 0;color:#8b2f3c;font:400 .9rem/1.3 "Cormorant Garamond",Georgia,serif}
+.player-status[hidden]{display:none}
+@media(max-width:420px){.special-player{padding:5px 5px 4px}.player-progress{grid-template-columns:2.8em minmax(0,1fr) 2.8em;gap:.25rem}.player-controls{gap:clamp(10px,4vw,18px)}.player-control{width:34px;height:36px}.player-play{width:46px;height:46px}}
 /* surprise */
 .sur{background:#fff url("images/final page surprise.png") center/cover no-repeat;display:grid;place-items:center;min-height:100dvh;padding:2rem 1rem;position:relative}
 .sur h2{margin:0;font:400 clamp(1.7rem,6vw,4.2rem)/1.2 var(--head);text-align:center;letter-spacing:.12em;max-width:16ch;position:relative;color:var(--t)}
@@ -168,7 +193,18 @@ nav a.on{background:var(--dd);transform:scale(1.4)}
 </div></section>
 <section class="full nae" id="s3"><div class="bg" id="naeBg"></div><h2 id="naeT"></h2></section>
 <section class="poems" id="s4"><div class="poems-hearts" id="poemHearts" aria-hidden="true"></div><h2 class="title rv">KAVITHAIGAL</h2><div class="pg" id="pg"></div></section>
-<section class="tl" id="s5"><div class="timeline-hearts" id="timelineHearts" aria-hidden="true"></div><h2 class="title rv">Our Memory Timeline</h2><div class="path" id="path"><svg><path id="dots"/></svg><div id="mems"></div></div><div class="special rv"><p id="spec"></p><div class="special-date"><input id="specialDay" type="text" inputmode="numeric" maxlength="2" pattern="[0-9]{1,2}" placeholder="DD" aria-label="Day of month">-09-2026</div><img class="special-player" id="specialPlayer" src="images/music-player-controls.png" alt="Music player controls" hidden></div></section>
+<section class="tl" id="s5"><div class="timeline-hearts" id="timelineHearts" aria-hidden="true"></div><h2 class="title rv">Our Memory Timeline</h2><div class="path" id="path"><svg><path id="dots"/></svg><div id="mems"></div></div><div class="special rv"><p id="spec"></p><div class="special-date"><input id="specialDay" type="text" inputmode="numeric" maxlength="2" pattern="[0-9]{1,2}" placeholder="DD" aria-label="Day of month">-09-2026</div><div class="special-player" id="specialPlayer" role="group" aria-label="Our love song player" hidden>
+  <audio class="player-audio" id="playerAudio" preload="metadata" src="audio/our-love-song.mp3"></audio>
+  <div class="player-progress"><span class="player-time" id="elapsedTime">00:00</span><input class="player-seek" id="playerSeek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Song progress" disabled><span class="player-time" id="durationTime">--:--</span></div>
+  <div class="player-controls">
+    <button class="player-control" id="shuffleTrack" type="button" aria-label="Shuffle unavailable for one track" title="One track available" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h2.5c4.2 0 6.8 10 11 10H21m-3-3 3 3-3 3M3 17h2.5c1.8 0 3.2-2.1 4.5-4.4m3-5.2c1.4-1.6 2.8-2.4 4.5-2.4H21m-3-3 3 3-3 3" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    <button class="player-control" id="previousTrack" type="button" aria-label="Previous track unavailable for one track" title="One track available" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6 8 12l11 6z"/></svg></button>
+    <button class="player-control player-play" id="togglePlayback" type="button" aria-label="Play our love song" title="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></button>
+    <button class="player-control" id="nextTrack" type="button" aria-label="Next track unavailable for one track" title="One track available" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l11 6-11 6z"/></svg></button>
+    <button class="player-control" id="repeatTrack" type="button" aria-label="Enable repeat" aria-pressed="false" title="Repeat off"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4m14-1v2a3 3 0 0 1-3 3H3" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+  </div>
+  <p class="player-status" id="playerStatus" role="status" aria-live="polite" hidden></p>
+</div></div></section>
 <section class="sur" id="s6">
   <div class="timeline-hearts" id="surpriseHearts" aria-hidden="true"></div>
   <h2 id="sh"></h2>
@@ -335,8 +371,36 @@ $("path").addEventListener("pointerleave",()=>setOn(-1));
 cards.forEach((c,i)=>c.addEventListener("click",e=>{setOn(c.classList.contains("on")?-1:i)}));
 $("spec").textContent=CFG.special;
 const specialDay=$("specialDay"),specialPlayer=$("specialPlayer");
-specialDay.addEventListener("input",()=>{if(specialDay.value.trim()!=="19"){specialPlayer.classList.remove("is-visible");specialPlayer.hidden=true}});
-specialDay.addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();if(specialDay.value.trim()==="19"){specialPlayer.hidden=false;requestAnimationFrame(()=>specialPlayer.classList.add("is-visible"))}else{specialPlayer.classList.remove("is-visible");specialPlayer.hidden=true}});
+const playerAudio=$("playerAudio"),playerSeek=$("playerSeek"),playButton=$("togglePlayback"),repeatButton=$("repeatTrack"),playerStatus=$("playerStatus");
+const elapsedTime=$("elapsedTime"),durationTime=$("durationTime");
+const playIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg>';
+const pauseIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM15 5h4v14h-4z"/></svg>';
+function formatPlayerTime(time){if(!Number.isFinite(time)||time<0)return"--:--";const seconds=Math.floor(time);return String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0")}
+function setPlayerStatus(message){playerStatus.textContent=message;playerStatus.hidden=!message}
+let playerSeeking=false,seekDisplayTarget=null;
+function updatePlayerProgress(){const duration=playerAudio.duration,current=Number.isFinite(playerAudio.currentTime)?playerAudio.currentTime:0,hasMetadata=playerAudio.readyState>=HTMLMediaElement.HAVE_METADATA&&Number.isFinite(duration)&&duration>0;elapsedTime.textContent=formatPlayerTime(Math.round(seekDisplayTarget!==null&&current<seekDisplayTarget?seekDisplayTarget:current));if(seekDisplayTarget!==null&&current>=seekDisplayTarget)seekDisplayTarget=null;durationTime.textContent=formatPlayerTime(duration);playerSeek.disabled=!hasMetadata;if(!playerSeeking)playerSeek.value=hasMetadata?String(current/duration*100):"0";playerSeek.style.setProperty("--progress",hasMetadata?playerSeek.value+"%":"0%")}
+function updatePlaybackButton(){const playing=!playerAudio.paused&&!playerAudio.ended;playButton.innerHTML=playing?pauseIcon:playIcon;playButton.setAttribute("aria-label",playing?"Pause our love song":"Play our love song");playButton.title=playing?"Pause":"Play"}
+playerAudio.addEventListener("loadedmetadata",updatePlayerProgress);
+playerAudio.addEventListener("durationchange",updatePlayerProgress);
+playerAudio.addEventListener("timeupdate",updatePlayerProgress);
+playerAudio.addEventListener("seeked",updatePlayerProgress);
+playerAudio.addEventListener("play",updatePlaybackButton);
+playerAudio.addEventListener("pause",updatePlaybackButton);
+playerAudio.addEventListener("ended",updatePlaybackButton);
+playerAudio.addEventListener("waiting",()=>setPlayerStatus("Loading audio…"));
+playerAudio.addEventListener("playing",()=>setPlayerStatus(""));
+playerAudio.addEventListener("error",()=>setPlayerStatus("The audio could not be loaded. Please check the audio file and try again."));
+playButton.addEventListener("click",async()=>{if(playerAudio.paused){if(playerAudio.ended)playerAudio.currentTime=0;setPlayerStatus("Loading audio…");try{await playerAudio.play()}catch(error){setPlayerStatus("Playback failed. Please try again.");console.error("Love song playback failed:",error)}}else playerAudio.pause()});
+function seekPlayerFromSlider(){if(playerSeek.disabled||!Number.isFinite(playerAudio.duration)||playerAudio.duration<=0)return;const position=(Number(playerSeek.value)/100)*playerAudio.duration;seekDisplayTarget=position;playerAudio.currentTime=position;elapsedTime.textContent=formatPlayerTime(Math.round(position));playerSeek.style.setProperty("--progress",playerSeek.value+"%")}
+playerSeek.addEventListener("pointerdown",()=>{playerSeeking=true});
+playerSeek.addEventListener("keydown",event=>{if(["ArrowLeft","ArrowRight","Home","End","PageUp","PageDown"].includes(event.key))playerSeeking=true});
+playerSeek.addEventListener("input",event=>{event.stopPropagation();seekPlayerFromSlider()});
+playerSeek.addEventListener("change",()=>{seekPlayerFromSlider();playerSeeking=false});
+window.addEventListener("pointerup",()=>{if(playerSeeking){seekPlayerFromSlider();playerSeeking=false}});
+playerSeek.addEventListener("click",event=>event.stopPropagation());
+repeatButton.addEventListener("click",()=>{playerAudio.loop=!playerAudio.loop;repeatButton.setAttribute("aria-pressed",String(playerAudio.loop));repeatButton.setAttribute("aria-label",playerAudio.loop?"Disable repeat":"Enable repeat");repeatButton.title=playerAudio.loop?"Repeat on":"Repeat off"});
+specialDay.addEventListener("input",()=>{if(specialDay.value.trim()!=="19"){specialPlayer.classList.remove("is-visible");specialPlayer.hidden=true;playerAudio.pause()}});
+specialDay.addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();if(specialDay.value.trim()==="19"){specialPlayer.hidden=false;requestAnimationFrame(()=>specialPlayer.classList.add("is-visible"));if(playerAudio.readyState===0)playerAudio.load()}else{specialPlayer.classList.remove("is-visible");specialPlayer.hidden=true;playerAudio.pause()}});
 
 // 6
 const SH="THE SURPRISE IS NOT OVER BABE";
