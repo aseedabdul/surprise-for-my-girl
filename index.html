@@ -159,7 +159,8 @@ section{position:relative;overflow:hidden}
 @keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
 .stage{display:none;position:absolute;inset:0;background:rgba(255,255,255,.96);z-index:4;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1.4rem;text-align:center}
 .stage.show{display:flex}
-.mas{width:min(190px,45vw);animation:pop .8s cubic-bezier(.3,1.6,.5,1) both,bob 2.6s ease-in-out .8s infinite}
+.mas{width:min(190px,45vw);aspect-ratio:200/190;animation:pop .8s cubic-bezier(.3,1.6,.5,1) both,bob 2.6s ease-in-out .8s infinite}
+#mas img{width:100%;height:100%;object-fit:contain}
 @keyframes pop{from{transform:scale(0) rotate(-12deg)}to{transform:none}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .bub{position:relative;background:var(--ll);border:2px solid var(--l);border-radius:22px;padding:1rem 1.4rem;max-width:30rem;font-size:1.3rem}
@@ -323,7 +324,7 @@ viraivil un kanavanaga.`}],
   special:"Thangoo unoda travel panna intha oru varusam ni enaku neraya visayam ye life la alaga katuna. Love ooda value enanu enaku purinjuchu ,Oruthi unmaiya namala nesicha ipditha irukum antha feel irukkum nu kaatuna .Na neraya visayathula unna paathu proud feel paneeruke chlm, Ni enaku kudutha love a vida na kuduthurukananu therla intha oru varusathula aana neraya ala vachuruke, Ini vara kaalam ni ena love panratha vida oru padi mela unna love panre Insha allah. Aprm one more thing ivlo memories a mention panna naa epdi antha day va marape.",
   say:"If you want to know the surprise, you say I love you five times.",
   voiceAudio:"",                                   // DUDU_VOICE_AUDIO (optional mp3 path)
-  mascotImg:"",                                    // DUDU_CHARACTER_PLACEHOLDER (blank = built-in bear)
+  mascotImg:"images/last-page-character.png",      // Optional custom character image
   qrImg:"", qrUrl:"#", qrLabel:"Open our surprise"  // QR_CODE_PLACEHOLDER, QR_TARGET_URL
 };
 /* ================================================= */
