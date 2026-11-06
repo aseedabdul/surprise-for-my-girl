@@ -425,12 +425,17 @@ $("qa").href=CFG.qrUrl;$("qa").textContent=CFG.qrLabel;
 let count=0,stopped=false,restarts=0,rec=null;
 const msg=t=>$("msg").textContent=t;
 function pull(){if(pulled)return;pulled=true;rope.classList.add("gone");setTimeout(()=>{$("stage").classList.add("show");speak()},500)}
-function speak(){let started=false;const go=()=>{if(started)return;started=true;listen()};
+function speak(){let started=false,queued=false;const go=()=>{if(started)return;started=true;listen()};
   if(CFG.voiceAudio){const a=new Audio(CFG.voiceAudio);a.onended=go;a.onerror=go;a.play().catch(go);return}
   if(!("speechSynthesis"in window)){go();return}
-  const u=new SpeechSynthesisUtterance(CFG.say),vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
-  const pick=vs.find(v=>/female|zira|samantha|aria|jenny|heera|google uk english female|google us english/i.test(v.name))||vs.find(v=>/en-(IN|GB|US)/i.test(v.lang))||vs[0];
-  if(pick)u.voice=pick;u.lang=pick?pick.lang:"en-US";u.rate=.95;u.pitch=1.25;u.onend=go;u.onerror=go;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(go,12000)}
+  const synth=speechSynthesis,male=/\b(male|david|mark|guy|ryan|eric|brian|daniel|alex|aaron|arthur|oliver|thomas|christopher|james|george|matthew|andrew|fred)\b/i,natural=/natural|neural|premium|enhanced/i;
+  const rank=v=>(male.test(v.name)?100:0)+(/^en-US\b/i.test(v.lang)?20:0)+(natural.test(v.name)?10:0);
+  const queue=voices=>{if(queued)return;queued=true;const vs=voices.filter(v=>/^en(?:-|$)/i.test(v.lang)),preferred=vs.filter(v=>male.test(v.name)).sort((a,b)=>rank(b)-rank(a)),fallback=vs.sort((a,b)=>rank(b)-rank(a)),pick=preferred[0]||fallback[0],u=new SpeechSynthesisUtterance(CFG.say);
+    if(pick)u.voice=pick;u.lang=pick&&/^en/i.test(pick.lang)?pick.lang:"en-US";u.rate=.9;u.pitch=1.4;u.volume=1;u.onend=go;u.onerror=go;synth.cancel();synth.speak(u);setTimeout(go,12000)};
+  const voices=synth.getVoices();if(voices.length){queue(voices);return}
+  const onVoicesChanged=()=>{const loaded=synth.getVoices();if(loaded.length){clearTimeout(timer);synth.removeEventListener("voiceschanged",onVoicesChanged);queue(loaded)}};
+  synth.addEventListener("voiceschanged",onVoicesChanged);
+  const timer=setTimeout(()=>{synth.removeEventListener("voiceschanged",onVoicesChanged);queue(synth.getVoices())},1000)}
 function listen(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!SR){msg("Voice recognition isn’t supported in this browser. Use the button to count instead.");$("tap").hidden=false;return}
   rec=new SR();rec.lang="en-IN";rec.continuous=false;rec.interimResults=false;
