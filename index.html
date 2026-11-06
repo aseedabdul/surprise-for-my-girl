@@ -428,10 +428,10 @@ function pull(){if(pulled)return;pulled=true;rope.classList.add("gone");setTimeo
 function speak(){let started=false,queued=false;const go=()=>{if(started)return;started=true;listen()};
   if(CFG.voiceAudio){const a=new Audio(CFG.voiceAudio);a.onended=go;a.onerror=go;a.play().catch(go);return}
   if(!("speechSynthesis"in window)){go();return}
-  const synth=speechSynthesis,male=/\b(male|david|mark|guy|ryan|eric|brian|daniel|alex|aaron|arthur|oliver|thomas|christopher|james|george|matthew|andrew|fred)\b/i,natural=/natural|neural|premium|enhanced/i;
-  const rank=v=>(male.test(v.name)?100:0)+(/^en-US\b/i.test(v.lang)?20:0)+(natural.test(v.name)?10:0);
-  const queue=voices=>{if(queued)return;queued=true;const vs=voices.filter(v=>/^en(?:-|$)/i.test(v.lang)),preferred=vs.filter(v=>male.test(v.name)).sort((a,b)=>rank(b)-rank(a)),fallback=vs.sort((a,b)=>rank(b)-rank(a)),pick=preferred[0]||fallback[0],u=new SpeechSynthesisUtterance(CFG.say);
-    if(pick)u.voice=pick;u.lang=pick&&/^en/i.test(pick.lang)?pick.lang:"en-US";u.rate=.9;u.pitch=1.4;u.volume=1;u.onend=go;u.onerror=go;synth.cancel();synth.speak(u);setTimeout(go,12000)};
+  const synth=speechSynthesis,youthful=/\b(child|young|kid|boy|junior)\b/i,bright=/google us english|samantha|jenny|aria|zira|ava|salli|kendra|kimberly|joelle/i,natural=/natural|neural|premium|enhanced/i;
+  const rank=v=>(youthful.test(v.name)?100:0)+(bright.test(v.name)?50:0)+(/^en-US\b/i.test(v.lang)?20:0)+(natural.test(v.name)?10:0);
+  const queue=voices=>{if(queued)return;queued=true;const vs=voices.filter(v=>/^en(?:-|$)/i.test(v.lang)),pick=vs.sort((a,b)=>rank(b)-rank(a))[0],u=new SpeechSynthesisUtterance(CFG.say);
+    if(pick)u.voice=pick;u.lang=pick&&/^en/i.test(pick.lang)?pick.lang:"en-US";u.rate=.88;u.pitch=1.6;u.volume=1;u.onend=go;u.onerror=go;synth.cancel();synth.speak(u);setTimeout(go,12000)};
   const voices=synth.getVoices();if(voices.length){queue(voices);return}
   const onVoicesChanged=()=>{const loaded=synth.getVoices();if(loaded.length){clearTimeout(timer);synth.removeEventListener("voiceschanged",onVoicesChanged);queue(loaded)}};
   synth.addEventListener("voiceschanged",onVoicesChanged);
