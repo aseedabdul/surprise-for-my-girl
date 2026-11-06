@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Noto+Serif+Tamil:wght@400&display=swap" rel="stylesheet">
 <style>
-:root{--w:#fff;--l:#E8DDF5;--ll:#F5F0FA;--d:#A477C5;--dd:#9165B3;--t:#40364A;--serif:"Cormorant Garamond","Noto Serif Tamil",Georgia,serif;--head:"Playfair Display","Noto Serif Tamil",Georgia,serif;--hand:"Great Vibes","Brush Script MT",cursive;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--w:#fff;--l:#3a294d;--ll:#4a355d;--d:#4d2d66;--dd:#33204a;--t:#40364A;--serif:"Cormorant Garamond","Noto Serif Tamil",Georgia,serif;--head:"Playfair Display","Noto Serif Tamil",Georgia,serif;--hand:"Great Vibes","Brush Script MT",cursive;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--w);color:var(--t);font-family:var(--serif);font-size:1.25rem;line-height:1.7;overflow-x:hidden}
@@ -62,11 +62,11 @@ section{position:relative;overflow:hidden}
   transition: transform .4s ease;
 }
 @media (hover:hover) and (pointer:fine) and (min-width:561px){.scene-image>img:hover{transform:scale(1.5);z-index:2}}
-.proposal-heart{position:absolute;display:block;color:rgba(145,101,179,.82);animation:proposal-heart-float var(--duration) ease-in-out var(--delay) infinite;will-change:transform,opacity}
+.proposal-heart{position:absolute;display:block;color:rgba(77,45,102,.82);animation:proposal-heart-float var(--duration) ease-in-out var(--delay) infinite;will-change:transform,opacity}
 @keyframes proposal-heart-float{0%{opacity:0;transform:translateY(0) scale(.8)}18%{opacity:.65}72%{opacity:.5}100%{opacity:0;transform:translateY(-110px) scale(1.05)}}
 .fh{position:absolute;color:var(--d);animation:flt 5s ease-in-out infinite;pointer-events:none}
 @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.letter{background:var(--d);color:#FFFFFF;border-radius:6px;padding:clamp(1.4rem,5vw,3rem);box-shadow:0 18px 50px -22px rgba(164,119,197,.55)}
+.letter{background:var(--d);color:#FFFFFF;border-radius:6px;padding:clamp(1.4rem,5vw,3rem);box-shadow:0 18px 50px -22px rgba(77,45,102,.55)}
 .letter p{margin:0 0 1.5em;max-width:62ch}
 .letter p:last-child{margin:0;font:400 1.9rem/1.3 var(--hand);color:inherit}
 .rv{opacity:0;transform:translateY(18px);transition:opacity 1s,transform 1s}
@@ -132,13 +132,13 @@ section{position:relative;overflow:hidden}
 .player-seek:hover::-moz-range-thumb{transform:scale(1.15)}
 .player-controls{display:flex;align-items:center;justify-content:center;gap:clamp(16px,5vw,36px);width:100%}
 .player-control{width:38px;height:40px;padding:5px;border:0;border-radius:50%;display:grid;place-items:center;background:transparent;color:inherit;cursor:pointer;transition:transform .18s ease,background-color .18s ease,opacity .18s ease}
-.player-control:hover:not(:disabled){transform:scale(1.12);background:rgba(164,119,197,.16)}
+.player-control:hover:not(:disabled){transform:scale(1.12);background:rgba(77,45,102,.16)}
 .player-control:active:not(:disabled){transform:scale(.94)}
 .player-control:disabled{opacity:.38;cursor:not-allowed}
 .player-control svg{width:100%;height:100%;fill:currentColor;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
 .player-play{width:54px;height:54px;padding:11px;border:3px solid currentColor}
 .player-play svg{width:100%;height:100%}
-.player-control[aria-pressed="true"]{color:var(--dd);background:rgba(164,119,197,.16)}
+.player-control[aria-pressed="true"]{color:var(--dd);background:rgba(77,45,102,.16)}
 .player-status{margin:.35rem 0 0;color:#8b2f3c;font:400 .9rem/1.3 "Cormorant Garamond",Georgia,serif}
 .player-status[hidden]{display:none}
 @media(max-width:420px){.special-player{padding:5px 5px 4px}.player-progress{grid-template-columns:2.8em minmax(0,1fr) 2.8em;gap:.25rem}.player-controls{gap:clamp(10px,4vw,18px)}.player-control{width:34px;height:36px}.player-play{width:46px;height:46px}}
@@ -168,13 +168,13 @@ section{position:relative;overflow:hidden}
 .btn:hover{background:var(--d);color:#fff}
 .qr{display:none;flex-direction:column;align-items:center;gap:1rem;animation:pop 1s cubic-bezier(.3,1.4,.5,1) both}
 .qr.show{display:flex}
-.qb{width:min(240px,60vw);aspect-ratio:1;border-radius:18px;overflow:hidden;box-shadow:0 0 0 8px var(--l),0 20px 50px -14px rgba(164,119,197,.8)}
+.qb{width:min(240px,60vw);aspect-ratio:1;border-radius:18px;overflow:hidden;box-shadow:0 0 0 8px var(--l),0 20px 50px -14px rgba(77,45,102,.8)}
 .qb img{width:100%;height:100%;object-fit:cover}
 .hp{position:fixed;z-index:9;pointer-events:none;color:var(--d);animation:up 1.6s ease-out forwards}
 @keyframes up{from{opacity:1;transform:translateY(0) scale(.6)}to{opacity:0;transform:translateY(-130px) scale(1.4)}}
 /* nav */
 nav{position:fixed;right:.9rem;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:.9rem}
-nav a{width:10px;height:10px;border-radius:50%;background:rgba(164,119,197,.4);border:1.5px solid #fff;box-shadow:0 0 0 1px var(--dd);transition:.4s}
+nav a{width:10px;height:10px;border-radius:50%;background:rgba(77,45,102,.4);border:1.5px solid #fff;box-shadow:0 0 0 1px var(--dd);transition:.4s}
 nav a.on{background:var(--dd);transform:scale(1.4)}
 :focus-visible{outline:3px solid var(--dd);outline-offset:3px}
 @media(max-width:820px){.pg{grid-template-columns:1fr 1fr}.pc,.pc:nth-child(5),.pc:nth-child(6){grid-column:auto}.pc:nth-child(1){grid-column:1/-1}.pc:nth-child(6){grid-column:1/-1;max-width:50%;margin:0 auto}}
@@ -348,11 +348,11 @@ $("naeBg").innerHTML=ph("NAE_SESANG_IMAGE_PLACEHOLDER",CFG.naeImg,CFG.naeAlt,tru
 $("naeT").innerHTML="NAE SESANG".split(" ").map((w,i)=>`<span style="transition-delay:${i*.7}s">${w}</span>`).join(" ");
 
 // 2
-const girlBoy=`<svg viewBox="0 0 520 300" role="img" aria-label="Miniature anime scene: she sends him a proposal message"><rect width="520" height="300" fill="#F5F0FA"/><circle cx="260" cy="150" r="130" fill="#E8DDF5"/>
-<g><path d="M95 300v-70q0-30 40-30t40 30v70z" fill="#A477C5"/><circle cx="135" cy="150" r="48" fill="#FFE6D8"/><path d="M85 150q-6-62 50-62t50 62q-12-34-50-34t-50 34z" fill="#6b5483"/><circle cx="118" cy="156" r="6" fill="#40364A"/><circle cx="152" cy="156" r="6" fill="#40364A"/><circle cx="108" cy="172" r="8" fill="#f6b9c9" opacity=".8"/><circle cx="162" cy="172" r="8" fill="#f6b9c9" opacity=".8"/><path d="M127 174q8 7 16 0" stroke="#40364A" stroke-width="3" fill="none" stroke-linecap="round"/>
-<rect x="162" y="205" width="58" height="92" rx="9" fill="#fff" stroke="#A477C5" stroke-width="3" transform="rotate(14 190 250)"/><rect x="170" y="218" width="40" height="13" rx="6" fill="#E8DDF5" transform="rotate(14 190 250)"/><rect x="176" y="238" width="38" height="13" rx="6" fill="#A477C5" transform="rotate(14 190 250)"/><circle cx="204" cy="272" r="5" fill="#f08fb0" transform="rotate(14 190 250)"/></g>
-<path d="M232 120q60-60 110-10" stroke="#A477C5" stroke-width="3" fill="none" stroke-dasharray="2 8" stroke-linecap="round"/>
-<g><path d="M345 300v-70q0-30 40-30t40 30v70z" fill="#7f8fbe"/><circle cx="385" cy="150" r="48" fill="#FFE6D8"/><path d="M335 148q2-62 52-62t48 62q-10-20-26-24-20 14-48 4-18 4-26 20z" fill="#40364A"/><circle cx="368" cy="158" r="10" fill="#fff" stroke="#40364A" stroke-width="3"/><circle cx="402" cy="158" r="10" fill="#fff" stroke="#40364A" stroke-width="3"/><circle cx="368" cy="159" r="4" fill="#40364A"/><circle cx="402" cy="159" r="4" fill="#40364A"/><ellipse cx="385" cy="185" rx="6" ry="8" fill="#40364A"/><circle cx="352" cy="176" r="8" fill="#f6b9c9" opacity=".8"/><circle cx="418" cy="176" r="8" fill="#f6b9c9" opacity=".8"/><path d="M350 128l-8-10M420 128l8-10" stroke="#A477C5" stroke-width="3" stroke-linecap="round"/></g></svg>`;
+const girlBoy=`<svg viewBox="0 0 520 300" role="img" aria-label="Miniature anime scene: she sends him a proposal message"><rect width="520" height="300" fill="#4a355d"/><circle cx="260" cy="150" r="130" fill="#3a294d"/>
+<g><path d="M95 300v-70q0-30 40-30t40 30v70z" fill="#4d2d66"/><circle cx="135" cy="150" r="48" fill="#FFE6D8"/><path d="M85 150q-6-62 50-62t50 62q-12-34-50-34t-50 34z" fill="#6b5483"/><circle cx="118" cy="156" r="6" fill="#40364A"/><circle cx="152" cy="156" r="6" fill="#40364A"/><circle cx="108" cy="172" r="8" fill="#f6b9c9" opacity=".8"/><circle cx="162" cy="172" r="8" fill="#f6b9c9" opacity=".8"/><path d="M127 174q8 7 16 0" stroke="#40364A" stroke-width="3" fill="none" stroke-linecap="round"/>
+<rect x="162" y="205" width="58" height="92" rx="9" fill="#fff" stroke="#4d2d66" stroke-width="3" transform="rotate(14 190 250)"/><rect x="170" y="218" width="40" height="13" rx="6" fill="#3a294d" transform="rotate(14 190 250)"/><rect x="176" y="238" width="38" height="13" rx="6" fill="#4d2d66" transform="rotate(14 190 250)"/><circle cx="204" cy="272" r="5" fill="#f08fb0" transform="rotate(14 190 250)"/></g>
+<path d="M232 120q60-60 110-10" stroke="#4d2d66" stroke-width="3" fill="none" stroke-dasharray="2 8" stroke-linecap="round"/>
+<g><path d="M345 300v-70q0-30 40-30t40 30v70z" fill="#7f8fbe"/><circle cx="385" cy="150" r="48" fill="#FFE6D8"/><path d="M335 148q2-62 52-62t48 62q-10-20-26-24-20 14-48 4-18 4-26 20z" fill="#40364A"/><circle cx="368" cy="158" r="10" fill="#fff" stroke="#40364A" stroke-width="3"/><circle cx="402" cy="158" r="10" fill="#fff" stroke="#40364A" stroke-width="3"/><circle cx="368" cy="159" r="4" fill="#40364A"/><circle cx="402" cy="159" r="4" fill="#40364A"/><ellipse cx="385" cy="185" rx="6" ry="8" fill="#40364A"/><circle cx="352" cy="176" r="8" fill="#f6b9c9" opacity=".8"/><circle cx="418" cy="176" r="8" fill="#f6b9c9" opacity=".8"/><path d="M350 128l-8-10M420 128l8-10" stroke="#4d2d66" stroke-width="3" stroke-linecap="round"/></g></svg>`;
 $("scene").innerHTML=(CFG.proposalImg?`<div class="scene-image">${ph("",CFG.proposalImg,CFG.proposalAlt)}</div>`:girlBoy)+[[20,8,"2.2s"],[78,2,"3s"],[48,30,"1s"],[10,60,"4s"]].map(([x,y,dl])=>`<span class="fh" style="left:${x}%;top:${y}%;animation-delay:-${dl}">${heart(22)}</span>`).join("");
 $("letter").innerHTML=CFG.letter.split("\n\n").map((p,i,a)=>`<p class="rv" style="transition-delay:${(i%3)*.12}s">${(i===0?"“":"")+p+(i===a.length-1?"”":"")}</p>`).join("");
 
@@ -414,7 +414,7 @@ rope.addEventListener("pointermove",e=>{if(!drag)return;line.style.height=70+Mat
 const end=e=>{if(!drag)return;drag=false;rope.classList.remove("drag");const dy=e.clientY-y0;rope.style.transform="";if(dy>55)pull();else{rope.classList.add("sp");line.style.height="70px"}};
 rope.addEventListener("pointerup",end);rope.addEventListener("pointercancel",end);
 rope.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pull()}});
-$("mas").innerHTML=CFG.mascotImg?`<img src="${CFG.mascotImg}" alt="Cute character" style="width:100%">`:`<svg viewBox="0 0 200 190" role="img" aria-label="DUDU_CHARACTER_PLACEHOLDER: cute lavender bear"><circle cx="48" cy="40" r="26" fill="#A477C5"/><circle cx="152" cy="40" r="26" fill="#A477C5"/><circle cx="48" cy="40" r="13" fill="#E8DDF5"/><circle cx="152" cy="40" r="13" fill="#E8DDF5"/><ellipse cx="100" cy="100" rx="78" ry="70" fill="#C9B3E3"/><ellipse cx="100" cy="122" rx="30" ry="22" fill="#F5F0FA"/><ellipse cx="100" cy="112" rx="10" ry="7" fill="#40364A"/><circle cx="70" cy="90" r="9" fill="#40364A"/><circle cx="130" cy="90" r="9" fill="#40364A"/><circle cx="73" cy="87" r="3" fill="#fff"/><circle cx="133" cy="87" r="3" fill="#fff"/><circle cx="52" cy="110" r="10" fill="#f6b9c9" opacity=".8"/><circle cx="148" cy="110" r="10" fill="#f6b9c9" opacity=".8"/><path d="M90 128q10 9 20 0" stroke="#40364A" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="100" cy="185" rx="42" ry="8" fill="#E8DDF5"/></svg>`;
+$("mas").innerHTML=CFG.mascotImg?`<img src="${CFG.mascotImg}" alt="Cute character" style="width:100%">`:`<svg viewBox="0 0 200 190" role="img" aria-label="DUDU_CHARACTER_PLACEHOLDER: cute lavender bear"><circle cx="48" cy="40" r="26" fill="#4d2d66"/><circle cx="152" cy="40" r="26" fill="#4d2d66"/><circle cx="48" cy="40" r="13" fill="#3a294d"/><circle cx="152" cy="40" r="13" fill="#3a294d"/><ellipse cx="100" cy="100" rx="78" ry="70" fill="#4d2d66"/><ellipse cx="100" cy="122" rx="30" ry="22" fill="#4a355d"/><ellipse cx="100" cy="112" rx="10" ry="7" fill="#40364A"/><circle cx="70" cy="90" r="9" fill="#40364A"/><circle cx="130" cy="90" r="9" fill="#40364A"/><circle cx="73" cy="87" r="3" fill="#fff"/><circle cx="133" cy="87" r="3" fill="#fff"/><circle cx="52" cy="110" r="10" fill="#f6b9c9" opacity=".8"/><circle cx="148" cy="110" r="10" fill="#f6b9c9" opacity=".8"/><path d="M90 128q10 9 20 0" stroke="#40364A" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="100" cy="185" rx="42" ry="8" fill="#3a294d"/></svg>`;
 $("bub").textContent=CFG.say;
 $("qb").innerHTML=ph("QR_CODE_PLACEHOLDER",CFG.qrImg,"QR code for our surprise");
 $("qa").href=CFG.qrUrl;$("qa").textContent=CFG.qrLabel;
@@ -443,7 +443,7 @@ $("tap").onclick=()=>add(1);
 function burst(){if(RM)return;for(let i=0;i<5;i++){const h=document.createElement("span"),r=$("cnt").getBoundingClientRect();h.className="hp";h.innerHTML=heart(14+Math.random()*16);h.style.left=r.left+r.width/2+(Math.random()-.5)*120+"px";h.style.top=r.top+"px";document.body.appendChild(h);setTimeout(()=>h.remove(),1700)}}
 function done(){stopped=true;try{rec&&rec.abort()}catch(_){}
   setTimeout(()=>{msg("");$("mas").style.display=$("bub").style.display=$("tap").style.display="none";$("qr").classList.add("show");
-    if(!RM)for(let i=0;i<24;i++)setTimeout(()=>{const h=document.createElement("span");h.className="hp";h.innerHTML=heart(12+Math.random()*18);h.style.left=Math.random()*100+"vw";h.style.top=60+Math.random()*35+"vh";h.style.color=Math.random()>.5?"#A477C5":"#9165B3";document.body.appendChild(h);setTimeout(()=>h.remove(),1700)},i*110)},900)}
+    if(!RM)for(let i=0;i<24;i++)setTimeout(()=>{const h=document.createElement("span");h.className="hp";h.innerHTML=heart(12+Math.random()*18);h.style.left=Math.random()*100+"vw";h.style.top=60+Math.random()*35+"vh";h.style.color=Math.random()>.5?"#4d2d66":"#33204a";document.body.appendChild(h);setTimeout(()=>h.remove(),1700)},i*110)},900)}
 speechSynthesis&&speechSynthesis.getVoices&&speechSynthesis.getVoices();
 </script>
 </body>
