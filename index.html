@@ -21,6 +21,7 @@ section{position:relative;overflow:hidden}
 .bg>img,.bg>.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:zoom 22s ease-out forwards}
 .bg>picture{position:absolute;inset:0;width:100%;height:100%}
 .bg>picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:zoom 22s ease-out forwards}
+.bg>img,.bg>picture>img{animation:none}
 @media(min-width:821px){#heroBg>img{object-position:center 35%}}
 .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(64,54,74,.28),rgba(64,54,74,.38))}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.12)}}
