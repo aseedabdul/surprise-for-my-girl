@@ -22,7 +22,10 @@ section{position:relative;overflow:hidden}
 .bg>picture{position:absolute;inset:0;width:100%;height:100%}
 .bg>picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:zoom 22s ease-out forwards}
 .bg>img,.bg>picture>img{animation:none}
-@media(min-width:821px){#heroBg>img{object-position:center 35%}}
+#heroBg{overflow:hidden}
+#heroBg>img,#heroBg>picture>img{width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1.05);transform-origin:center center}
+@media(min-width:821px){#heroBg>img,#heroBg>picture>img{object-position:center 28%;transform:scale(1.12)}}
+@media(max-width:820px){#heroBg>img,#heroBg>picture>img{object-position:center center;transform:scale(1.08)}}
 @media(min-width:821px){
   #naeBg::before{content:"";position:absolute;inset:-12px;z-index:0;background:url("images/cinematic-collage.jpg") center top/cover no-repeat;filter:blur(12px)}
   #naeBg picture{z-index:1}
